@@ -1,0 +1,54 @@
+## Basic Configuration
+
+baseurl = "http://alexd.ch/" 
+builddrafts = false
+canonifyurls = false
+languageCode = "en-US"
+
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+
+author = "Alexander Döring"
+title = "Alexander Döring"
+
+theme = "hugo-goa"
+
+## Hugo Built-in Features
+enableRobotsTXT = true
+
+## Site Settings
+[params]
+author = "Alexander Döring"
+intro = ""
+description = "Software Developer"
+authorimage = ""
+dateformat = "Jan 2, 2006"
+
+## Site Meta Settings
+[params.meta]
+description = ""
+keywords = "developer,go,golang"
+
+## Social Accounts
+[params.social]
+github = "alexd765"
+email = "email@alexd.ch"
+
+## Extras
+[params.extra]
+copyright = "© 2017. Alexander Döring" 
+poweredby = true
+hightlightjs = true
+
+## Main Menu
+[[menu.main]]
+    name = "blog"
+    weight = 100
+    identifier = "blog"
+    url = "/posts/"
+[[menu.main]]
+    name = "about"
+    identifier = "about"
+    weight = 200
+    url = "/about/"
