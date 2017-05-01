@@ -5,7 +5,7 @@ languageCode = "en-US"
 title = "Alexander Döring"
 theme = "academic"
 enableRobotsTXT = true
-
+copyright = "&copy; 2017 Alexander Döring"
 sharing = true
 
 [params]
