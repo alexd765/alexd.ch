@@ -1,7 +1,7 @@
 +++
 date = "2017-04-29T17:36:28+02:00"
 title = "About"
-weight = 2
+weight = 3
 draft = false
 widget = "about"
 +++
