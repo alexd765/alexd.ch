@@ -16,6 +16,16 @@ sharing = true
   avatar = "alexander.png"
   email = "email@alexd.ch"
 
+[[params.social]]
+  icon = "envelope"
+  icon_pack = "fa"
+  link = "mailto:email@alexd.ch"
+
+[[params.social]]
+  icon = "github"
+  icon_pack = "fa"
+  link = "//github.com/alexd765"
+
 [[menu.main]]
     name = "Blog"
     url = "#posts"
@@ -25,4 +35,3 @@ sharing = true
     name = "About"
     url = "#about"
     weight = 2
-    

@@ -11,4 +11,4 @@ I code. A lot. Currently mostly in go.
 
 I set up infrastructure with AWS and Terraform.
 
-Part time Scrum-Master.
+Part time Scrum Master.
