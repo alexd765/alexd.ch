@@ -6,6 +6,16 @@ title = "Alexander Döring"
 theme = "academic"
 enableRobotsTXT = true
 
+sharing = true
+
+[params]
+  name = "Alexander Döring"
+  role = "Senior Software Developer"
+  organization = "smallpdf.com"
+  organization_url = "https://smallpdf.com"
+  avatar = "alexander.png"
+  email = "email@alexd.ch"
+
 [[menu.main]]
     name = "Blog"
     url = "#posts"
@@ -15,3 +25,4 @@ enableRobotsTXT = true
     name = "About"
     url = "#about"
     weight = 2
+    
