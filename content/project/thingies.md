@@ -1,13 +1,17 @@
 +++
 date = "2017-05-01T06:51:55+02:00"
 title = "Thingies"
-summary = "This is a small project to experiment with AWS Lambda. It will convert an image into a grayscale png using no server at all."
+summary = "An experiment with AWS Lambda"
 tags = []
 highlight = true
 math = false
 +++
 
 Thingies is an experiment with AWS Lambda. It will convert an image into a grayscale png.
+
+[on github](https://github.com/alexd765/thingies)
+
+[live site](http://stuffthingy.com)
 
 ## AWS Services used
 
