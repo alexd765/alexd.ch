@@ -2,7 +2,7 @@
 date = "2017-05-01T06:51:55+02:00"
 title = "Thingies"
 summary = "An experiment with AWS Lambda"
-tags = []
+tags = ["go","aws"]
 highlight = true
 math = false
 +++
