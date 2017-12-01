@@ -1,5 +1,5 @@
 +++
-date = "2017-05-01T06:51:55+02:00"
+date = 2017-05-01
 title = "Thingies"
 summary = "An experiment with AWS Lambda"
 tags = ["go","aws"]

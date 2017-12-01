@@ -1,5 +1,5 @@
 +++
-date = "2017-04-29T17:36:28+02:00"
+date = 2017-04-29
 title = "About"
 weight = 3
 draft = false
