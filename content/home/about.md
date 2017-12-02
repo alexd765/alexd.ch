@@ -7,7 +7,7 @@ widget = "about"
 +++
 
 # About Me
-I code. A lot. Currently mostly in go.
+I code. A lot. Currently mostly in Go.
 
 I set up infrastructure with AWS and Terraform.
 

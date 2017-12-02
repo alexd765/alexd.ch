@@ -7,7 +7,7 @@ highlight = true
 math = false
 +++
 
-Thingies is an experiment with AWS Lambda. It will convert an image into a grayscale png.
+Thingies is an experiment with AWS Lambda. It converts an image into a grayscale png.
 
 [on github](https://github.com/alexd765/thingies)
 
