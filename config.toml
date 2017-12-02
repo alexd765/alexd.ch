@@ -1,42 +1,77 @@
-baseurl = "https://alexd.ch/" 
-builddrafts = false
-canonifyurls = false
-languageCode = "en-US"
+baseurl = "https://alexd.ch/"
 title = "Alexander Döring"
-theme = "academic"
-enableRobotsTXT = true
 copyright = "&copy; 2017 Alexander Döring"
-sharing = true
+theme = "academic"
+enableEmoji = true
+footnotereturnlinkcontents = "<sup>^</sup>"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+preserveTaxonomyNames = true
+paginate = 10
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+staticDir = ["static"]
+
+[outputs]
+  home = [ "HTML", "CSS", "RSS" ]
+  section = [ "HTML", "RSS" ]
+
+[blackfriday]
+  hrefTargetBlank = true
+  fractions = true
+  smartypants = true
 
 [params]
   name = "Alexander Döring"
-  role = "Senior Software Developer"
-  organization = "smallpdf.com"
-  organization_url = "https://smallpdf.com"
+  role = "Senior Software Engineer"
+  organizations = [ { name = "Smallpdf.com", url = "https://smallpdf.com" } ]
   avatar = "alexander.png"
   email = "email@alexd.ch"
 
-[[params.social]]
-  icon = "envelope"
-  icon_pack = "fa"
-  link = "mailto:email@alexd.ch"
+  date_format = "2006-01-02"
+  time_format = "15:04"
 
-[[params.social]]
-  icon = "github"
-  icon_pack = "fa"
-  link = "//github.com/alexd765"
+  [params.talks]
+    time = true
+
+  [params.publications]
+    date_format = "2006-01-02"
+
+  [params.projects]
+    list_children = true
+    publication_format = 3
+
+  [[params.social]]
+    icon = "envelope"
+    icon_pack = "fa"
+    link = "mailto:email@alexd.ch"
+
+  [[params.social]]
+    icon = "github"
+    icon_pack = "fa"
+    link = "//github.com/alexd765"
+
+[params.menus]
+  align_right = true
 
 [[menu.main]]
-    name = "Blog"
-    url = "#posts"
-    weight = 1
+  name = "Talks"
+  url = "#talks"
+  weight = 1
 
 [[menu.main]]
-    name = "Side Projects"
-    url = "#projects"
-    weight = 2    
+  name = "Side Projects"
+  url = "#projects"
+  weight = 2
 
 [[menu.main]]
-    name = "About"
-    url = "#about"
-    weight = 3
+  name = "About"
+  url = "#about"
+  weight = 3
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  publication_type = "publication_types"
+
+[Languages.en]
+  languageCode = "en-us"

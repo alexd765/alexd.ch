@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://127.0.0.1:3999/go-in-your-browser.slide#1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Go In Your Browser</title>
+    
+    <script>
+      var notesEnabled =  false ;
+    </script>
+    <script src="./go-in-your-browser_files/slides.js"></script>
+
+    
+
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"><meta name="apple-mobile-web-app-capable" content="yes"></head>
+
+  <body style="display: none" class="loaded">
+
+    <section class="slides layout-widescreen" style="transform: scale(0.984);">
+
+      <article class="current">
+        <h1>Go In Your Browser</h1>
+        
+        <h3>30 November 2017</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Alexander Döring
+  </p>
+  
+
+  
+  <p>
+    Smallpdf.com
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  
+  
+      <article class="next">
+      
+        <h3>Outline</h3>
+        
+  <ul>
+  
+    <li>GopherJS</li>
+  
+    <li>WebAssembly</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article class="far-next">
+      
+        <h3>GopherJS</h3>
+        
+  <ul>
+  
+    <li>Transpiles Go code to Javascript</li>
+  
+    <li>Go standard library support is almost 100%</li>
+  
+    <li>Go can interact with the DOM</li>
+  
+    <li>Javascript can call Go</li>
+  
+    <li>Go can call Javascript</li>
+  
+    <li>Started by Richard Musiol (@neelance)</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>How?</h3>
+        
+  <ul>
+  
+    <li>serve locally with hot reloading:</li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>gopherjs serve</pre></div>
+  
+
+  <ul>
+  
+    <li>build:</li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>gopherjs build</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Example 1</h3>
+        
+  
+  <p>
+    example1.html:
+  </p>
+  
+
+  
+  <div class="code"><pre>&lt;html&gt;
+    &lt;body&gt;
+        &lt;button id="clickme" style="font-size:20pt"&gt;Click Me&lt;/button&gt;
+        &lt;div id="display" style="font-size:20pt"&gt;&lt;/div&gt;
+        &lt;script src="example1.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Example 1</h3>
+        
+  
+  <p>
+    example1.go:
+  </p>
+  
+
+  
+  <div class="code"><pre>package main
+
+import "honnef.co/go/js/dom"
+
+func main() {
+    d := dom.GetWindow().Document()
+
+    clickme := d.GetElementByID("clickme").(*dom.HTMLButtonElement)
+    display := d.GetElementByID("display").(*dom.HTMLDivElement)
+
+    clickme.AddEventListener("click", false, func(event dom.Event) {
+        display.SetInnerHTML("Hello World")
+    })
+}</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Example 1</h3>
+        
+  
+  <p>
+    iframe:
+  </p>
+  
+
+<iframe src="./example1/example1.html"></iframe>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Example 2</h3>
+        
+  
+  <p>
+    Almost the same as example 1.
+<br>
+
+    Only change:
+  </p>
+  
+
+  
+  <div class="code"><pre>clickme.AddEventListener("click", false, func(event dom.Event) {
+    for n := 0; n &lt; 5; n++ {
+        go func() {
+            n := n
+            time.Sleep(time.Duration(rand.Intn(5000)) * time.Millisecond)
+            text := display.InnerHTML()
+            text += fmt.Sprintf("%d&lt;br&gt;", n)
+            display.SetInnerHTML(text)
+        }()
+    }
+})</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Example 2</h3>
+        
+  
+  <p>
+    iframe:
+  </p>
+  
+
+<iframe src="./example2/example2.html" height="400" width="400"></iframe>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Why?</h3>
+        
+  <ul>
+  
+    <li>Frontend in Go</li>
+  
+    <li>Replace processing in the Cloud with processing in the browser</li>
+  
+    <li>Use almost all Go libraries</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Frameworks</h3>
+        
+  <ul>
+  
+    <li>Bindings for Angular</li>
+  
+    <li>Multiple bindings for React</li>
+  
+    <li>...</li>
+  
+    <li>GopherJS/Vecty</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Example 3</h3>
+        
+  
+  <p>
+    example3.html:
+  </p>
+  
+
+  
+  <div class="code"><pre>&lt;html&gt;
+    &lt;body&gt;
+        &lt;script src="example3.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Example 3</h3>
+        
+  
+  <p>
+    example3.go:
+  </p>
+  
+
+  
+  <div class="code"><pre>package main
+
+import (
+    "github.com/gopherjs/vecty"
+    "github.com/gopherjs/vecty/elem"
+    "github.com/gopherjs/vecty/event"
+)
+
+func main() {
+    vecty.RenderBody(&amp;Page{})
+}
+
+type Page struct {
+    vecty.Core
+
+    text string
+}
+
+...</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Example 3</h3>
+        
+  
+  <div class="code"><pre>...
+
+func (p *Page) Render() *vecty.HTML {
+    return elem.Body(
+        vecty.Markup(vecty.Style("font-size", "20pt")),
+        elem.Input(
+            vecty.Markup(
+                event.Input(func(e *vecty.Event) {
+                    p.text = e.Target.Get("value").String()
+                    p.text += " " + p.text
+                    vecty.Rerender(p)
+                }),
+            ),
+        ),
+        elem.Break(),
+        vecty.Text(p.text),
+    )
+}</pre></div>
+  
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Example 3</h3>
+        
+  
+  <p>
+    iframe:
+  </p>
+  
+
+<iframe src="./example3/example3.html" height="400" width="400"></iframe>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Size Matters</h3>
+        
+  <ul>
+  
+    <li>Minify</li>
+  
+  </ul>
+
+  
+  <div class="code"><pre>gopherjs build -m</pre></div>
+  
+
+  <ul>
+  
+    <li>gzip</li>
+  
+    <li>Avoid fmt</li>
+  
+    <li>Avoid net/http</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Example 4</h3>
+        <p class="link"><a href="https://resizerly.com/" target="_blank">resizerly.com</a></p>
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>WebAssembly (wasm)</h3>
+        
+  <ul>
+  
+    <li>Low-level bytecode and stack machine run in the browser</li>
+  
+    <li>Influenced by asm.js &amp; Portable Native Client (PNaCl)</li>
+  
+    <li>Supported by all major browsers</li>
+  
+    <li>Compilation target for C and C++</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Go Issue #18892</h3>
+        
+<div class="image">
+  <img src="./go-in-your-browser_files/issue1.png">
+</div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Go Issue #18892</h3>
+        
+<div class="image">
+  <img src="./go-in-your-browser_files/issue2.png">
+</div>
+
+<div class="image">
+  <img src="./go-in-your-browser_files/issue3.png">
+</div>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>wasm wip</h3>
+        <p class="link"><a href="https://github.com/neelance/go/tree/wasm-wip" target="_blank">github.com/neelance/go/tree/wasm-wip</a></p>
+  
+  <p>
+    <b>working</b>
+  </p>
+  
+
+  <ul>
+  
+    <li>running the generated wasm code in browsers and in Node.js</li>
+  
+    <li>basic operations, conversions, etc.</li>
+  
+    <li>interfaces</li>
+  
+    <li>goroutines &amp; channels</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>wasm wip</h3>
+        
+  
+  <p>
+    <b>to-do</b>
+  </p>
+  
+
+  <ul>
+  
+    <li>reflection</li>
+  
+    <li>growing the stack of goroutines</li>
+  
+    <li>garbage collection</li>
+  
+    <li>optimizations </li>
+  
+    <li>...</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Recap</h3>
+        
+  <ul>
+  
+    <li>Early Days</li>
+  
+    <li>Huge Potential</li>
+  
+    <li>GopherJS is working now</li>
+  
+    <li>WebAssembly is going to work soonish</li>
+  
+    <li>Experiment with it</li>
+  
+    <li>Contribute</li>
+  
+    <li>Slides in Meetup comment</li>
+  
+  </ul>
+
+      
+      </article>
+  
+  
+  
+      <article>
+      
+        <h3>Smallpdf Is Hiring</h3>
+        
+<div class="image">
+  <img src="./go-in-your-browser_files/smallpdf-logo-compact.svg">
+</div>
+
+      
+      </article>
+  
+  
+
+      <article>
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Alexander Döring
+  </p>
+  
+
+  
+  <p>
+    Smallpdf.com
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+    <div class="slide-area" id="prev-slide-area"></div><div class="slide-area" id="next-slide-area"></div></section>
+
+    <div id="help" style="display: none;">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+    <script src="./go-in-your-browser_files/play.js"></script>
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  
+
+<link rel="stylesheet" type="text/css" href="./go-in-your-browser_files/css"><link rel="stylesheet" type="text/css" href="./go-in-your-browser_files/styles.css"></body></html>

@@ -1,5 +1,5 @@
 +++
-date = "2017-05-01T06:51:55+02:00"
+date = 2017-05-01
 title = "Thingies"
 summary = "An experiment with AWS Lambda"
 tags = ["go","aws"]
@@ -7,7 +7,7 @@ highlight = true
 math = false
 +++
 
-Thingies is an experiment with AWS Lambda. It will convert an image into a grayscale png.
+Thingies is an experiment with AWS Lambda. It converts an image into a grayscale png.
 
 [on github](https://github.com/alexd765/thingies)
 
