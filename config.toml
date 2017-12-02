@@ -53,11 +53,6 @@ defaultContentLanguageInSubdir = false
   align_right = true
 
 [[menu.main]]
-  name = "Blog"
-  url = "#posts"
-  weight = 1
-
-[[menu.main]]
   name = "Side Projects"
   url = "#projects"
   weight = 2
