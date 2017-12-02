@@ -21,7 +21,7 @@ defaultContentLanguageInSubdir = false
 
 [params]
   name = "Alexander Döring"
-  role = "Senior Sotware Engineer"
+  role = "Senior Software Engineer"
   organizations = [ { name = "Smallpdf.com", url = "https://smallpdf.com" } ]
   avatar = "alexander.png"
   email = "email@alexd.ch"
@@ -51,6 +51,11 @@ defaultContentLanguageInSubdir = false
 
 [params.menus]
   align_right = true
+
+[[menu.main]]
+  name = "Talks"
+  url = "#talks"
+  weight = 1
 
 [[menu.main]]
   name = "Side Projects"
