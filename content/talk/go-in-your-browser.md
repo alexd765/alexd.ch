@@ -7,3 +7,7 @@ event = "Zurich Gophers: IX Go Meetup"
 event_url = "https://www.meetup.com/Zurich-Gophers/events/242487809/"
 location = "Zurich, Switzerland"
 +++
+
+A talk about GopherJS and WebAssembly.
+
+{{% staticref "/slides/go-in-your-browser/" "newtab" %}}Slides{{% /staticref %}}

@@ -9,6 +9,7 @@ preserveTaxonomyNames = true
 paginate = 10
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
+staticDir = ["static"]
 
 [outputs]
   home = [ "HTML", "CSS", "RSS" ]
