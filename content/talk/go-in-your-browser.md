@@ -8,6 +8,15 @@ event_url = "https://www.meetup.com/Zurich-Gophers/events/242487809/"
 location = "Zurich, Switzerland"
 +++
 
+## Abstract
 A talk about GopherJS and WebAssembly.
 
-{{% staticref "/slides/go-in-your-browser/" "newtab" %}}Slides{{% /staticref %}}
+## Slides
+{{% staticref "/slides/go-in-your-browser/" "newtab" %}}Slides with live examples{{% /staticref %}}
+
+## Links
+- [GopherJS](https://github.com/gopherjs/gopherjs)
+- [Vecty](https://github.com/gopherjs/vecty)
+- [Resizerly.com](https://resizerly.com)
+- [WebAssembly](http://webassembly.org/)
+- [Go Issue 18892](https://github.com/golang/go/issues/18892)
