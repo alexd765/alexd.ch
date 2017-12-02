@@ -17,4 +17,8 @@ view = 1
   name = "Go"
   tag = ".go"
 
+[[filter]]
+  name = "GopherJS"
+  tag = ".gopherjs"
+
 +++
