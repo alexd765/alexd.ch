@@ -10,6 +10,7 @@ paginate = 10
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 staticDir = ["static"]
+googleAnalytics = "UA-110482329-1"
 
 [outputs]
   home = [ "HTML", "CSS", "RSS" ]
